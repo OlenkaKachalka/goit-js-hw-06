@@ -1,8 +1,18 @@
 const form = document.querySelector('.login-form')
 
-form.addEventListener('submit' , onFormSubmit)
+form.addEventListener('submit', handleSubmit)
 
-function onFormSubmit (event) {
+function handleSubmit(event) {
     event.preventDefault()
-    console.log('gbcv');
+    const {
+        elements: { email, password },
+    } = event.currentTarget
+
+    if (email.value === '' || password.value === '') {
+        return alert('Please fill in all the fields!')
+    }
+    const userDetails = { email: email.value, Password: password.value }
+    
+    console.log(userDetails)
+    event.currentTarget.reset()
 }
